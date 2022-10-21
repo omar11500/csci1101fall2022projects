@@ -45,5 +45,31 @@ while current_incorrect_guesses < num_of_incorrect_guesses and False in answer_g
     # Let the user guess a letter.
     letter = input("Enter a letter: ")
 
+    letter = letter.upper()
+
     # Check if user entered a valid letter.
-    if 
+    if re.search("^[A-Z]$", letter) and len(letter) == 1 and letter not in letters_guessed:
+       # Insert letter guessed (insertion sort)
+        current_letter_index = 0
+
+        for current_letter_guessed in letters_guessed:
+            if letter < current_letter_guessed:
+                break
+
+            current_answer_index += 1
+    
+        letters_guessed.insert(current_letter_index, letter)
+
+        # Check if letter is in the puzzle.
+        if letter in answer:
+            for current_answer_index in range(len(answer)):
+                if letter == answer[current_answer_index]:
+                    answer_guessed[current_answer_index] = True
+        else:
+            current_incorrect_guesses += 1
+
+# Post-game summary.
+if current_incorrect_guesses < num_of_incorrect_guesses:
+    print("Congratulations, you won!")
+else:
+    print(f"Sorry, you lost. The answer was {answer}")
