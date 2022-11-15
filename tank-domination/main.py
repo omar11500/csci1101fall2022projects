@@ -58,9 +58,9 @@ while game_running_flag:
     position_delta = 0
     
     if key_pressed[pygame.K_LEFT]: 
-        position_delta = -2
+        position_delta = -3
     elif key_pressed[pygame.K_RIGHT]:
-        position_delta = 2
+        position_delta = 3
         
     # Check for boundaries.
     if 0 <= game_characteristics["player"]["position"]["x"] + position_delta and game_characteristics["player"]["position"]["x"] + position_delta + game_tank_sprite.get_width() <= game_characteristics["cpu"]["position"]["x"]:
